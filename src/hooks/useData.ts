@@ -1,4 +1,4 @@
-import { CanceledError } from "axios";
+import { AxiosRequestConfig, CanceledError } from "axios";
 import { useState, useEffect } from "react";
 import apiClient from "../api-client";
 
@@ -7,7 +7,7 @@ interface fetchedAPIResults <T>{
   results: T[];
 }
 
-const useData = <T>(endPoint:string) => {
+const useData = <T>(endPoint:string,requestConfig?:AxiosRequestConfig, deps?:unknown[]) => {
   const [data, setData] = useState<T[]>([]);
   const [errors, setError] = useState("");
   const [isLoading, setIsloading] = useState(false);
@@ -16,7 +16,7 @@ const useData = <T>(endPoint:string) => {
     const controller = new AbortController();
     setIsloading(true);
     apiClient
-      .get<fetchedAPIResults<T>>(endPoint, { signal: controller.signal })
+      .get<fetchedAPIResults<T>>(endPoint, { signal: controller.signal, ...requestConfig })
       .then((res) => setData(res.data.results))
       .catch((err) => {
         if (err instanceof CanceledError) return;
@@ -24,7 +24,8 @@ const useData = <T>(endPoint:string) => {
       })
       .finally(() => setIsloading(false));
     return () => controller.abort();
-  }, [endPoint]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps?[...deps]:[]);
 
   return { data, errors, isLoading };
 };

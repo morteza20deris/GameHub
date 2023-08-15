@@ -1,10 +1,21 @@
-import { HStack, List, ListItem, Image, Text, Spinner } from "@chakra-ui/react";
+import {
+  HStack,
+  List,
+  ListItem,
+  Image,
+  Spinner,
+  Button,
+} from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import ImageUrl from "../Services/Image-url";
 import { Genre } from "../hooks/useGenres";
 
-export const isVPN = false;
-const GenreList = () => {
+interface Props {
+  onSelectedGenre: (selectedGenre: Genre) => void;
+}
+
+export const isVPN = true;
+const GenreList = ({ onSelectedGenre }: Props) => {
   const { data, isLoading } = useGenres();
   if (isLoading) return <Spinner />;
   let genres: Genre[];
@@ -19,8 +30,8 @@ const GenreList = () => {
           "https://assets.mspimages.in/gear/wp-content/uploads/2023/01/actio-games.jpg",
       },
       {
-        id: 0,
-        name: "Action",
+        id: 1,
+        name: "RPG",
         image_background:
           "https://assets.mspimages.in/gear/wp-content/uploads/2023/01/actio-games.jpg",
       },
@@ -40,7 +51,13 @@ const GenreList = () => {
                   : genre.image_background
               }
             />
-            <Text fontSize="lg">{genre.name}</Text>
+            <Button
+              onClick={() => onSelectedGenre(genre)}
+              variant="link"
+              fontSize="lg"
+            >
+              {genre.name}
+            </Button>
           </HStack>
         </ListItem>
       ))}

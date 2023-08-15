@@ -4,9 +4,14 @@ import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import offlineGames from "./newGame";
 import { isVPN } from "./GenreList";
+import { Genre } from "../hooks/useGenres";
 
-const GameGrid = () => {
-  const { data, isLoading } = useGames();
+interface Props {
+  selectedGenre: Genre | null;
+}
+
+const GameGrid = ({ selectedGenre }: Props) => {
+  const { data, isLoading } = useGames(selectedGenre);
   const skeletonNumber = [1, 2, 3, 4, 5];
   let gamesToShow = data;
 
