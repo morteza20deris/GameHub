@@ -10,7 +10,6 @@ const CriticScore = ({ score }: Props) => {
   } else {
     txtColor = "yellow";
   }
-  console.log(txtColor);
 
   return (
     <Badge colorScheme={txtColor} paddingX={2} borderRadius={6} fontSize="14px">
