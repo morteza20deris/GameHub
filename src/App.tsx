@@ -6,12 +6,13 @@ import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./Components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
-import SortSelector, { Sort } from "./Components/SortSelector";
+import SortSelector from "./Components/SortSelector";
 
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchText: string;
 }
 
 function App() {
@@ -28,7 +29,11 @@ function App() {
       }}
     >
       <GridItem area="nav">
-        <NavBar />
+        <NavBar
+          searchText={(searchText) =>
+            setGameQuery({ ...gameQuery, searchText })
+          }
+        />
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
@@ -39,7 +44,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="mein">
-        <HStack paddingX={1}>
+        <HStack spacing={5} marginBottom={5} paddingLeft={2}>
           <PlatformSelector
             onSelectedPlatform={(platform) =>
               setGameQuery({ ...gameQuery, platform })
