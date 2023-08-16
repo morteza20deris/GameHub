@@ -1,11 +1,11 @@
-import useData from "./useData"
+import Platforms from "../Data/Platforms"
 interface Platforms{
     id: number
     name: string
     slug:string
 }
 const usePlatforms = () => {
-  return useData<Platforms>("/platforms/lists/parents")
+  return ({data:Platforms,isLoading:false,error:null})
 }
 
 export default usePlatforms
