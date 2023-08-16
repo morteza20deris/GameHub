@@ -12,7 +12,7 @@ interface Props {
 
 const GameGrid = ({ gameQuery }: Props) => {
   const { data, isLoading } = useGames(gameQuery);
-  const skeletonNumber = [1, 2, 3, 4, 5];
+  const skeletonNumber = [1, 2, 3, 4, 4];
   let gamesToShow = data;
 
   isVPN ? (gamesToShow = data) : (gamesToShow = offlineGames);
@@ -22,7 +22,7 @@ const GameGrid = ({ gameQuery }: Props) => {
       <SimpleGrid
         padding="10px"
         columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
-        spacing={3}
+        spacing={6}
       >
         {isLoading &&
           skeletonNumber.map((skel) => <GameCardSkeleton key={skel} />)}
