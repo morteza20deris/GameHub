@@ -20,32 +20,14 @@ export const isVPN = true;
 const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
   const { data, isLoading } = useGenres();
   if (isLoading) return <Spinner />;
-  let genres: Genre[];
-  if (isVPN) {
-    genres = data;
-  } else {
-    genres = [
-      {
-        id: 0,
-        name: "Action",
-        image_background:
-          "https://assets.mspimages.in/gear/wp-content/uploads/2023/01/actio-games.jpg",
-      },
-      {
-        id: 1,
-        name: "RPG",
-        image_background:
-          "https://assets.mspimages.in/gear/wp-content/uploads/2023/01/actio-games.jpg",
-      },
-    ];
-  }
+
   return (
     <>
       <Heading marginBottom={2} fontSize="2xl">
         Genres
       </Heading>
       <List>
-        {genres.map((genre) => (
+        {data?.results.map((genre) => (
           <ListItem paddingY={1} key={genre.id}>
             <HStack>
               <Image

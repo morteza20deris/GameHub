@@ -1,4 +1,5 @@
-import Genres from "../Data/Genres";
+import { useQuery } from "@tanstack/react-query";
+import apiClient from "../api-client";
 
 export interface Genre {
   id: number
@@ -6,8 +7,12 @@ export interface Genre {
   image_background:string
 }
 
-
-
-const useGenres = () => ({data:Genres,isLoading:false,error:null})
+const getGenre = new apiClient<Genre>("/genres")
+const useGenres = () =>
+  useQuery(
+    {
+      queryKey: ["genres"], queryFn:
+        getGenre.getAll
+    })
 
 export default useGenres;
