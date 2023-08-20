@@ -12,7 +12,8 @@ const useGenres = () =>
   useQuery(
     {
       queryKey: ["genres"], queryFn:
-        getGenre.getAll
+        getGenre.getAll,
+      staleTime : 24*60*60*1000
     })
 
 export default useGenres;

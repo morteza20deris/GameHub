@@ -10,7 +10,8 @@ const getPlatforms = new apiClient<Platform>("/platforms/lists/parents")
 const usePlatforms = () =>
    useQuery({
     queryKey: ["platforms"],
-    queryFn: getPlatforms.getAll
+     queryFn: getPlatforms.getAll,
+    staleTime: 24*60*60*1000
   })
 
   
