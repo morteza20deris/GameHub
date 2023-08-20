@@ -8,12 +8,11 @@ import {
 } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import ImageUrl from "../Services/Image-url";
-import { Genre } from "../hooks/useGenres";
 import { Heading } from "@chakra-ui/react";
 
 interface Props {
-  onSelectedGenre: (selectedGenre: Genre) => void;
-  selectedGenre?: Genre | null;
+  onSelectedGenre: (selectedGenre: number) => void;
+  selectedGenre?: number | null;
 }
 
 export const isVPN = true;
@@ -43,8 +42,8 @@ const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
               <Button
                 textAlign="left"
                 whiteSpace="normal"
-                fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
-                onClick={() => onSelectedGenre(genre)}
+                fontWeight={selectedGenre === genre.id ? "bold" : "normal"}
+                onClick={() => onSelectedGenre(genre.id)}
                 variant="link"
                 fontSize="lg"
               >
