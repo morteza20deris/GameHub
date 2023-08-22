@@ -25,6 +25,11 @@ class APIClient<T> {
             .get<fetchedAPIResults<T>>(this.endPoint, config)
             .then(res=>res.data)
     }
+    get = (id:number|string) => {
+        return AxiosInstance
+            .get<T>(this.endPoint+"/"+id)
+        .then(res=>res.data)
+    }
 }
 
 export default APIClient
