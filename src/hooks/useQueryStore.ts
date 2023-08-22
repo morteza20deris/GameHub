@@ -1,19 +1,7 @@
 import { create } from "zustand";
+import { GameQueryProps } from "../PropEntities/GameQueryProps";
 
-interface GameQuery {
-  genreID?: number | undefined;
-  platformID?: number | undefined;
-  sortOrder?: string;
-  searchText?: string;
-}
-interface Props{
-    gameQuery: GameQuery
-    setGenreID: (genreID: number) => void
-    setPlatformID: (platformID: number) => void
-    setSortOrder: (sortOrder: string) => void
-    setSearchText: (searchText: string) => void
-}
-const useGameQueryStore = create<Props>(set => ({
+const useGameQueryStore = create<GameQueryProps>(set => ({
     gameQuery: {},
     setGenreID: (genreID) => set(store=>({gameQuery:{...store.gameQuery,genreID}})),
     setPlatformID: (platformID) => set((store)=>({gameQuery:{...store.gameQuery,platformID}})),

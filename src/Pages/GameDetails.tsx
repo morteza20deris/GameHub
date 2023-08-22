@@ -1,6 +1,6 @@
-import { Heading, Spinner, Text } from "@chakra-ui/react";
-import { useGetGameDetails } from "../hooks/useGetGameDetails";
+import { Heading, Spinner } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
+import { useGetGameDetails } from "../hooks/useGetGameDetails";
 
 const GameDetails = () => {
   const { slug } = useParams();
