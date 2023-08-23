@@ -7,6 +7,7 @@ import { RouterProvider } from "react-router-dom";
 import MainRoutes from "./Routing/Routes.tsx";
 import theme from "./Theme.ts";
 import "./index.css";
+import { Analytics } from "@vercel/analytics/react";
 const client = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -14,7 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <QueryClientProvider client={client}>
         <RouterProvider router={MainRoutes} />
-
+        <Analytics />
         <ReactQueryDevtools />
       </QueryClientProvider>
     </ChakraProvider>
