@@ -1,33 +1,29 @@
 import { Button, Text } from "@chakra-ui/react";
 import { useState } from "react";
 
+const textLimit = 300;
+
 export const ExpandableText = ({ content }: { content: string }) => {
   const [expanded, setExpanded] = useState(false);
-  if (content.length < 300)
-    return <Text dangerouslySetInnerHTML={{ __html: content }} />;
-  else {
-    if (expanded) {
-      return (
-        <>
-          <Text dangerouslySetInnerHTML={{ __html: content }} />
-          <Button onClick={() => setExpanded(false)} className="primary">
-            Show Less
-          </Button>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <Text
-            dangerouslySetInnerHTML={{
-              __html: content.substring(0, 300) + "...",
-            }}
-          />
-          <Button onClick={() => setExpanded(true)} className="primary">
-            Show More
-          </Button>
-        </>
-      );
-    }
+
+  if (content.includes("Español")) {
+    content = content.substring(0, content.indexOf("Español"));
   }
+
+  let desc = content;
+  expanded ? (desc = content) : (desc = desc.substring(0, textLimit));
+
+  return (
+    <>
+      <Text dangerouslySetInnerHTML={{ __html: desc }} />
+
+      <Button
+        size="sm"
+        onClick={() => setExpanded(!expanded)}
+        className="primary"
+      >
+        {expanded ? "Show Less" : "Show More"}
+      </Button>
+    </>
+  );
 };
