@@ -4,13 +4,14 @@ import { useRouteError, isRouteErrorResponse } from "react-router-dom";
 
 export const ErrorPage = () => {
   const err = useRouteError();
+  console.log(err);
 
   return (
     <Center h={window.innerHeight} color="red">
       {isRouteErrorResponse(err) ? (
         <Heading>This Page Does Not Exist...</Heading>
       ) : (
-        <Heading>Sorry Unexpected error has occurred</Heading>
+        <Heading>Sorry Unexpected error has occurred </Heading>
       )}
       <Icon fontSize={50} as={BiSad} />
     </Center>
