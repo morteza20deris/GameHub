@@ -1,7 +1,7 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
+import { Game } from "../PropEntities/Game";
 import CriticScore from "./CriticScore";
 import { GameAttributeDetails } from "./GameAttributeDetails";
-import { Game } from "../PropEntities/Game";
 
 interface Props {
   game: Game;
@@ -27,7 +27,7 @@ export const GameAttributes = ({ game }: Props) => {
       </GameAttributeDetails>
 
       <GameAttributeDetails title="Publishers">
-        {game.publishers.map((publisher) => (
+        {game.publishers?.map((publisher) => (
           <Text key={publisher.id}>{publisher.name}</Text>
         ))}
       </GameAttributeDetails>

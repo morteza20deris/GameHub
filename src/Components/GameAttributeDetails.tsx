@@ -12,7 +12,7 @@ export const GameAttributeDetails = ({ title, children }: Props) => {
       <Heading as="dt" fontSize="md" color="gray.600">
         {title}
       </Heading>
-      <dd>{children}</dd>
+      <dd>{children?.toString() === "" ? "Not Available" : children}</dd>
     </Box>
   );
 };

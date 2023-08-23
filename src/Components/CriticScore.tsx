@@ -13,7 +13,7 @@ const CriticScore = ({ score }: Props) => {
 
   return (
     <Badge colorScheme={txtColor} paddingX={2} borderRadius={6} fontSize="14px">
-      {score}
+      {score ? score : "Not Available"}
     </Badge>
   );
 };

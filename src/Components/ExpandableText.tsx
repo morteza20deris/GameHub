@@ -17,13 +17,15 @@ export const ExpandableText = ({ content }: { content: string }) => {
     <>
       <Text dangerouslySetInnerHTML={{ __html: desc }} />
 
-      <Button
-        size="sm"
-        onClick={() => setExpanded(!expanded)}
-        className="primary"
-      >
-        {expanded ? "Show Less" : "Show More"}
-      </Button>
+      {desc.length >= 300 && (
+        <Button
+          size="sm"
+          onClick={() => setExpanded(!expanded)}
+          className="primary"
+        >
+          {expanded ? "Show Less" : "Show More"}
+        </Button>
+      )}
     </>
   );
 };
