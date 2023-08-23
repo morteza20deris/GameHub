@@ -1,9 +1,10 @@
-import { GameQuery } from "./GameQuery";
+import  GameQuery  from "./GameQuery";
 
-export interface GameQueryProps {
+ interface GameQueryProps {
   gameQuery: GameQuery;
   setGenreID: (genreID: number) => void;
   setPlatformID: (platformID: number) => void;
   setSortOrder: (sortOrder: string) => void;
   setSearchText: (searchText: string) => void;
 }
+export default GameQueryProps

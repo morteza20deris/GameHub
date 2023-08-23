@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { GameQueryProps } from "../PropEntities/GameQueryProps";
+import  GameQueryProps  from "../PropEntities/GameQueryProps";
 
 const useGameQueryStore = create<GameQueryProps>(set => ({
     gameQuery: {},

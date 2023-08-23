@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import ms from "ms";
 import apiClient from "../api-client";
-import { Game } from "../PropEntities/Game";
+import  Game  from "../PropEntities/Game";
 
 
 

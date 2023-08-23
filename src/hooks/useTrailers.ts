@@ -1,4 +1,4 @@
-import { TrailerProps } from './../PropEntities/TrailerProps';
+import  TrailerProps  from './../PropEntities/TrailerProps';
 import APIClient from "../api-client"
 import { useQuery } from '@tanstack/react-query';
 import ms from 'ms';

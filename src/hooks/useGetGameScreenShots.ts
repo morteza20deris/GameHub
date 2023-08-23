@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { GameScreenShotProps } from "../PropEntities/GameScreenShotprops"
+import  GameScreenShotProps  from "../PropEntities/GameScreenShotprops"
 import APIClient from "../api-client"
 import ms from "ms";
 
