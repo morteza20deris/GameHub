@@ -5,15 +5,25 @@ interface Props {
 
 const CriticScore = ({ score }: Props) => {
   let txtColor = "green";
+  let fontsize = "14px";
+
   if (score > 50) {
     txtColor = "green";
   } else {
     txtColor = "yellow";
   }
-
+  if (!score) {
+    txtColor = "red";
+    fontsize = "11px";
+  }
   return (
-    <Badge colorScheme={txtColor} paddingX={2} borderRadius={6} fontSize="14px">
-      {score ? score : "Not Available"}
+    <Badge
+      colorScheme={txtColor}
+      paddingX={2}
+      borderRadius={6}
+      fontSize={fontsize}
+    >
+      {score ? score : "N/A"}
     </Badge>
   );
 };

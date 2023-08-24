@@ -1,4 +1,5 @@
 import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import ClearFiltersButton from "../Components/ClearFiltersButton";
 import GameGrid from "../Components/GameGrid";
 import GenreList from "../Components/GenreList";
 import PageHeader from "../Components/PageHeader";
@@ -29,6 +30,7 @@ export const HomePage = () => {
           <HStack spacing={5} marginBottom={5}>
             <PlatformSelector />
             <SortSelector />
+            <ClearFiltersButton />
           </HStack>
         </Box>
         <GameGrid />

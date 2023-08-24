@@ -15,7 +15,7 @@ import {
   SiSega,
 } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
-import { HStack, Icon } from "@chakra-ui/react";
+import { Badge, HStack, Icon } from "@chakra-ui/react";
 import { IconType } from "react-icons";
 import Platform from "../PropEntities/Platform";
 
@@ -40,12 +40,19 @@ const PlatformIconList = ({ platforms }: Props) => {
     web: BsGlobe,
   };
 
+  const previewPlatforms = platforms.slice(0, 4);
+
   return (
     <>
       <HStack marginY={2}>
-        {platforms?.map((plat) => (
+        {previewPlatforms?.map((plat) => (
           <Icon key={plat.id} as={iconMap[plat.slug]} color="gray.500" />
         ))}
+        {platforms.length > 4 && (
+          <Badge colorScheme="gray" paddingX={2} borderRadius={6}>
+            +{platforms.length - 4}
+          </Badge>
+        )}
       </HStack>
     </>
   );
