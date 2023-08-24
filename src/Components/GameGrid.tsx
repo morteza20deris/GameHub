@@ -8,7 +8,6 @@ const GameGrid = () => {
   // throw new Error();
 
   const { data, isLoading, fetchNextPage, hasNextPage } = useGames();
-  if (data && data?.pages.length < 1) return null;
 
   const skeletonNumber = [1, 2, 3, 4, 5];
   const fetchedGamesCount =
