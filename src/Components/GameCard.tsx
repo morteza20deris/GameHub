@@ -1,4 +1,11 @@
-import { Card, CardBody, HStack, Heading, Image } from "@chakra-ui/react";
+import {
+  Card,
+  CardBody,
+  HStack,
+  Heading,
+  Image,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import ImageUrl from "../Services/Image-url";
 import Game from "../PropEntities/Game";
@@ -10,9 +17,13 @@ interface Props {
 }
 
 const GameCard = ({ game }: Props) => {
+  const TXTcolor = useColorModeValue("white", "black");
+
   return (
     <>
       <Card
+        variant="filled"
+        bgColor="gray.700"
         _hover={{
           transform: "scale(1.03)",
           transition: "transform .15s ease-in",
@@ -20,17 +31,18 @@ const GameCard = ({ game }: Props) => {
       >
         <Image
           overflow="hidden"
-          borderRadius={10}
+          borderTopRadius={5}
+          borderBottomRadius={10}
           src={ImageUrl(game.background_image, 600, 400)}
         />
-        <CardBody>
+        <CardBody color="black">
           <HStack marginBottom={3} justifyContent="space-between">
             <PlatformIconList
               platforms={game.parent_platforms?.map((p) => p.platform)}
             />
             <CriticScore score={game.metacritic} />
           </HStack>
-          <Heading fontSize="2xl">
+          <Heading color={TXTcolor} fontSize="2xl">
             <Link to={`/games/${game.slug}`}>{game.name}</Link>
           </Heading>
         </CardBody>

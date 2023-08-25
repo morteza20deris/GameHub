@@ -49,7 +49,12 @@ const PlatformIconList = ({ platforms }: Props) => {
           <Icon key={plat.id} as={iconMap[plat.slug]} color="gray.500" />
         ))}
         {platforms.length > 4 && (
-          <Badge colorScheme="gray" paddingX={2} borderRadius={6}>
+          <Badge
+            fontSize="14px"
+            colorScheme="green"
+            paddingX={2}
+            borderRadius={6}
+          >
             +{platforms.length - 4}
           </Badge>
         )}
