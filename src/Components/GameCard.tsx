@@ -21,32 +21,34 @@ const GameCard = ({ game }: Props) => {
 
   return (
     <>
-      <Card
-        variant="filled"
-        bgColor="gray.700"
-        _hover={{
-          transform: "scale(1.03)",
-          transition: "transform .15s ease-in",
-        }}
-      >
-        <Image
-          overflow="hidden"
-          borderTopRadius={5}
-          borderBottomRadius={10}
-          src={ImageUrl(game.background_image, 600, 400)}
-        />
-        <CardBody color="black">
-          <HStack marginBottom={3} justifyContent="space-between">
-            <PlatformIconList
-              platforms={game.parent_platforms?.map((p) => p.platform)}
-            />
-            <CriticScore score={game.metacritic} />
-          </HStack>
-          <Heading color={TXTcolor} fontSize="2xl">
-            <Link to={`/games/${game.slug}`}>{game.name}</Link>
-          </Heading>
-        </CardBody>
-      </Card>
+      <Link to={`/games/${game.slug}`}>
+        <Card
+          variant="filled"
+          bgColor="gray.700"
+          _hover={{
+            transform: "scale(1.03)",
+            transition: "transform .15s ease-in",
+          }}
+        >
+          <Image
+            overflow="hidden"
+            borderTopRadius={5}
+            borderBottomRadius={10}
+            src={ImageUrl(game.background_image, 600, 400)}
+          />
+          <CardBody color="black">
+            <HStack marginBottom={3} justifyContent="space-between">
+              <PlatformIconList
+                platforms={game.parent_platforms?.map((p) => p.platform)}
+              />
+              <CriticScore score={game.metacritic} />
+            </HStack>
+            <Heading color={TXTcolor} fontSize="2xl">
+              {game.name}
+            </Heading>
+          </CardBody>
+        </Card>
+      </Link>
     </>
   );
 };
