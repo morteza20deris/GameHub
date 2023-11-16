@@ -1,6 +1,7 @@
 # React + TypeScript + Vite
 
 Deployed Project: https://game-hub-wheat-three.vercel.app
+
 -----you might need to use a VPN if you are in Iran -----
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
