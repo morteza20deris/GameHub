@@ -6,6 +6,7 @@ import {
   List,
   ListItem,
   Spinner,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import ImageUrl from "../Services/Image-url";
 import useGenres from "../hooks/useGenres";
@@ -14,6 +15,7 @@ import useGameQueryStore from "../hooks/useQueryStore";
 export const isVPN = true;
 const GenreList = () => {
   const { data, isLoading } = useGenres();
+  const textColor = useColorModeValue("black", "white")
   const genreID = useGameQueryStore((s) => s.gameQuery.genreID);
   const setGenreID = useGameQueryStore((s) => s.setGenreID);
   if (isLoading) return <Spinner />;
@@ -38,6 +40,7 @@ const GenreList = () => {
                 }
               />
               <Button
+                color={textColor}
                 textAlign="left"
                 whiteSpace="normal"
                 fontWeight={genreID === genre.id ? "bold" : "normal"}
@@ -45,7 +48,7 @@ const GenreList = () => {
                 variant="link"
                 fontSize="lg"
               >
-                {genre.name}
+                {genre.name + ""}
               </Button>
             </HStack>
           </ListItem>

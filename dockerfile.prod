@@ -1,0 +1,15 @@
+FROM node:current-alpine3.20 AS build-stage
+
+WORKDIR /app
+COPY package*.json .
+RUN npm i
+RUN npm audit fix
+COPY . .
+RUN npm run build
+
+FROM nginx:1.12-alpine
+#RUN addgroup app && adduser -S -G app app
+#USER app
+COPY --from=build-stage /app/dist /usr/share/nginx/html/
+EXPOSE 80
+CMD [ "nginx","-g","daemon off;" ]
