@@ -1,10 +1,9 @@
 FROM node:current-alpine3.20
-# RUN addgroup app && adduser -S -G app app
-# USER app
+RUN addgroup app && adduser -S -G app app
+USER app
 WORKDIR /app
 COPY package*.json .
-RUN npm i
-RUN npm audit fix
-EXPOSE 3000
+RUN yarn install
+EXPOSE 5173
 COPY . .
-CMD npm run dev
+CMD yarn run dev

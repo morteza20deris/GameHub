@@ -1,9 +1,9 @@
 services:
   app: 
+    image: morteza20deris/gamehub:1
     build: 
       context: .
       dockerfile: dockerfile.prod
     ports:
       - 80:80
     restart: unless-stopped
-    

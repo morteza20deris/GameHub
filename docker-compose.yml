@@ -1,10 +1,15 @@
 services:
   app: 
+    image: morteza20deris/gamehub:1
     build: 
       context: .
       dockerfile: dockerfile
     ports:
       - 5173:5173
-    volumes:
-      - ./src:/app/src
-    
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: ./app/src
+        - action: rebuild
+          path: package.json
